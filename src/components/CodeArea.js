@@ -1,7 +1,15 @@
 import React from "react";
+import "../CSS/CodeArea.css";
 
 function CodeArea() {
-  return <h1>This is code Area</h1>;
+  return (
+    <>
+      <div class="codearea">
+        <p class="codeareap">Write your code here</p>
+        <div class="codewritearea"></div>
+      </div>
+    </>
+  );
 }
 
 export default CodeArea;

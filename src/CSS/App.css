@@ -1,0 +1,8 @@
+.wrapper {
+  height: 65%;
+}
+
+.codeandoptions {
+  height: 100%;
+  display: flex;
+}

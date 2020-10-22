@@ -1,4 +1,5 @@
 import React from "react";
+
 import "../CSS/outputarea.css";
 
 function OutputArea() {
