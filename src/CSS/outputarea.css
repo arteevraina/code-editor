@@ -1,0 +1,20 @@
+.textarea {
+  min-width: 70%;
+  min-height: 20vh;
+  background-color: #3d3d3d;
+  resize: none;
+  margin-left: 15px;
+}
+
+.outputarea {
+  background-color: #93d6e4;
+  bottom: 0%;
+  position: fixed;
+  width: 100%;
+  height: 35%;
+}
+
+.outputarea .outputtext {
+  margin-left: 15px;
+  font-family: cursive;
+}
