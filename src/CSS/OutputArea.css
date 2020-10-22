@@ -1,0 +1,19 @@
+.outputarea {
+  height: 35%;
+  background-color: #93d6e4;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.outputtext {
+  position: absolute;
+  left: 5%;
+}
+
+.textarea {
+  flex: 0 0 90%;
+  background-color: #3d3d3d;
+  margin: 3%;
+  border-radius: 18px;
+}

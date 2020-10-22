@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../CSS/outputarea.css";
+import "../CSS/OutputArea.css";
 
 function OutputArea() {
   return (
