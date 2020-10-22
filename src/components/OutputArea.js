@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import "../CSS/outputarea.css";
 
 function OutputArea() {
-    return (
-        <div>
-            <h1>These are options</h1>
-        </div>
-    )
+  return (
+    <div className="outputarea">
+      <h1 className="outputtext">Output </h1>
+      <textarea className="textarea"></textarea>
+    </div>
+  );
 }
 
-export default OutputArea
+export default OutputArea;
