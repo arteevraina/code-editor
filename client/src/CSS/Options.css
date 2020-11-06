@@ -6,12 +6,12 @@
 
 .optionsbox1 {
   height: 50%;
-  background-color: #2ec3b2;
+  background-color: goldenrod;
 }
 
 .optionsbox2 {
   height: 50%;
-  background-color: #c4c4c4;
+  background-color:mediumvioletred;
   position: relative;
   display: flex;
   justify-content: center;
