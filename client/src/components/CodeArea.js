@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import MonacoEditor from "react-monaco-editor";
 import "../CSS/CodeArea.css";
 
-function CodeArea({ defaultCode }) {
-  const onCodeChangeHandler = (newCode, e) => {
-    console.log(e);
-    return {
-      code: newCode
-    };
-  };
-
+function CodeArea({ defaultCode, onCodeChangeHandler }) {
   const inputChangeHandler = e => {
     return {
       input: e.target.value

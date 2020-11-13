@@ -3,25 +3,21 @@ import "../CSS/Options.css";
 import secret from "../secret";
 import axios from "axios";
 
-function Options({ state }) {
+function Options({ state, displayOutput }) {
   const onSubmitHandler = e => {
     e.preventDefault();
     alert("Submit Code");
     axios
       .post(`${secret.url}code/submit`, state)
       .then(res => {
-        console.log("this is " + res.data);
+        console.log("this is it" + JSON.stringify(res.data));
         const data = res.data;
         if (data.err) {
           // Error in user code
           console.log("options" + state);
-          return {
-            state: data.err
-          };
+          displayOutput(data.error);
         } else {
-          return {
-            result: data.output
-          };
+          displayOutput(data.output);
         }
       })
       .catch(err => {

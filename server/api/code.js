@@ -29,7 +29,7 @@ router.post("/submit", (req, res) => {
         .cPlusPlusExecute(code, input)
         .then(data => {
           console.log("SUCCESSFULL PROMISE " + data);
-          console.log("SENDING " + data);
+          console.log("SENDING " + JSON.stringify(data));
           res.json(data);
           deleteFile(path.join(__dirname, "../../input.txt"));
           deleteFile(path.join(__dirname, "../../test.cpp"));
