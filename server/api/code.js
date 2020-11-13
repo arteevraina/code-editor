@@ -22,6 +22,7 @@ router.post("/submit", (req, res) => {
   const code = req.body.code;
   const input = req.body.input;
   const lang = req.body.lang;
+  console.log("reached /submit");
   switch (lang) {
     case "cpp":
       return execute
