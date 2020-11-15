@@ -1,47 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CodeArea from "./components/CodeArea";
 import Options from "./components/Options";
 import OutputArea from "./components/OutputArea";
 import { code } from "./components/defaultCode";
+import { GlobalProvider } from "./context/GlobalState";
 import "./CSS/App.css";
 
-class App extends React.Component {
-  state = {
-    code: code.cpp,
+const App = () => {
+  const [state, setState] = useState({
+    code: code.python,
     result: "Submit code to see result",
-    lang: "cpp"
-  };
+    lang: "python",
+  });
 
-  onCodeChangeHandler = async (newCode, e) => {
-    this.setState({
-      code: newCode
+  const desplayOutput = async (output) => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        result: output,
+      };
     });
-    console.log(newCode);
 
-    console.log(this.state);
+    // console.log(state.result);
   };
 
-  desplayOutput = async output => {
-    this.setState({
-      result: output
-    });
-    console.log(this.state.result);
-  };
-
-  render() {
-    return (
+  return (
+    <GlobalProvider>
       <div class="wrapper">
         <div class="codeandoptions">
-          <CodeArea
-            defaultCode={this.state.code}
-            onCodeChangeHandler={this.onCodeChangeHandler}
-          />
-          <Options state={this.state} displayOutput={this.desplayOutput} />
+          <CodeArea />
+          <Options state={state} displayOutput={desplayOutput} />
         </div>
-        <OutputArea result={this.state.result} />
+        <OutputArea result={state.result} />
       </div>
-    );
-  }
-}
+    </GlobalProvider>
+  );
+};
 
 export default App;

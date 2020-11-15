@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import MonacoEditor from "react-monaco-editor";
+import { GlobalContext } from "../context/GlobalState";
 import "../CSS/CodeArea.css";
 
-function CodeArea({ defaultCode, onCodeChangeHandler }) {
-  const inputChangeHandler = e => {
+function CodeArea({ onCodeChangeHandler }) {
+  const { code } = useContext(GlobalContext);
+  console.log(code);
+  const { lang } = useContext(GlobalContext);
+  // console.log(lang);
+  const { handleCodeChange } = useContext(GlobalContext);
+
+  const inputChangeHandler = (e) => {
     return {
-      input: e.target.value
+      input: e.target.value,
     };
   };
+
+  // const onCodeChangeHandler = async (newCode, e) => {
+  //   setState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       code: newCode,
+  //     };
+  //   });
+  // };
 
   const options = {
     selectOnLineNumbers: true,
@@ -16,12 +32,12 @@ function CodeArea({ defaultCode, onCodeChangeHandler }) {
     cursorBlinking: "blink",
     autoClosingQuotes: "always",
     find: {
-      autoFindInSelection: "always"
+      autoFindInSelection: "always",
     },
-    snippetSuggestions: "inline"
+    snippetSuggestions: "inline",
   };
 
-  const editorDidMount = e => {
+  const editorDidMount = (e) => {
     console.log("Editor Mounted");
   };
 
@@ -33,11 +49,11 @@ function CodeArea({ defaultCode, onCodeChangeHandler }) {
           <MonacoEditor
             width="100%"
             height="100%"
-            //language={state.lang}
+            // language={lang}
             theme="vs-dark"
-            value={defaultCode}
+            value={code}
             options={options}
-            onChange={onCodeChangeHandler}
+            onChange={(newCode) => handleCodeChange(newCode)}
             editorDidMount={editorDidMount}
           />
         </div>
