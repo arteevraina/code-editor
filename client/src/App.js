@@ -1,26 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CodeArea from "./components/CodeArea";
 import Options from "./components/Options";
 import OutputArea from "./components/OutputArea";
 import { code } from "./components/defaultCode";
+import { GlobalProvider } from "./context/GlobalState";
 import "./CSS/App.css";
 
-function App() {
+const App = () => {
   const [state, setState] = useState({
-    code: code.cpp,
+    code: code.python,
     result: "Submit code to see result",
-    lang: "cpp"
+    lang: "python",
   });
 
+  const desplayOutput = async (output) => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        result: output,
+      };
+    });
+
+    // console.log(state.result);
+  };
+
   return (
-    <div class="wrapper">
-      <div class="codeandoptions">
-        <CodeArea defaultCode={state.code} />
-        <Options state={state} />
+    <GlobalProvider>
+      <div class="wrapper">
+        <div class="codeandoptions">
+          <CodeArea />
+          <Options state={state} displayOutput={desplayOutput} />
+        </div>
+        <OutputArea result={state.result} />
       </div>
-      <OutputArea result={state.result} />
-    </div>
+    </GlobalProvider>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 .codearea {
   height: 100%;
-  background-color: #FF8C00;
+  background-color: #12202f;
   flex: 0 0 70%;
   position: relative;
   display: flex;
@@ -11,6 +11,9 @@
   font-weight: 900;
   position: absolute;
   left: 5%;
+  font-style: italic;
+  color: antiquewhite;
+  font-size: xx-large;
   top: 2%;
 }
 

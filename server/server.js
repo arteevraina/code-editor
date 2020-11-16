@@ -4,14 +4,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 app.use(cors());
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+// IMPORTING ALL THE FILES
 const code = require("./api/code");
-app.use("/api", code);
+app.use("/api/code", code);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {

@@ -6,7 +6,8 @@ function OutputArea({ result }) {
   return (
     <div className="outputarea">
       <h1 className="outputtext">Output Area</h1>
-      <textarea className="textarea">{result}</textarea>
+      {console.log("outputara " + result)}
+      <textarea className="textarea" value={result}></textarea>
     </div>
   );
 }
