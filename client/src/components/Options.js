@@ -71,6 +71,7 @@ function Options({ displayOutput }) {
               onChange={(option) => handleLangChange(option.value)}
               value={defaultOption}
               placeholder="Select an option"
+              className="dropdownlang"
             />
           </div>
         </div>

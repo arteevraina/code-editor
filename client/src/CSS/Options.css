@@ -6,12 +6,12 @@
 
 .optionsbox1 {
   height: 50%;
-  background-color: #2ec3b2;
+  background-color: #0c1722;
 }
 
 .optionsbox2 {
   height: 50%;
-  background-color: #c4c4c4;
+  background-color: #203244;
   position: relative;
   display: flex;
   justify-content: center;
@@ -22,6 +22,8 @@
   left: 5%;
   top: 2%;
   font-weight: 900;
+  font-style: italic;
+  color: antiquewhite;
 }
 
 .optionswritearea {
@@ -44,4 +46,8 @@
   border-radius: 10px;
   border: none;
   color: white;
+}
+
+.dropdownlang {
+  color: antiquewhite;
 }

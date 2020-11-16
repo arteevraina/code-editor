@@ -1,6 +1,6 @@
 .outputarea {
   height: 35%;
-  background-color: #93d6e4;
+  background-color: rgb(17, 33, 36);
   position: relative;
   display: flex;
   justify-content: center;
@@ -8,6 +8,8 @@
 
 .outputtext {
   position: absolute;
+  color: antiquewhite;
+  font-style: italic;
   left: 5%;
 }
 
