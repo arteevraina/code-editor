@@ -51,7 +51,7 @@ const cExecute = (data, input) => {
 
           // SUCCESSFULL COMPILATION EXECUTING
           console.log("SUCCESSFULLY COMPILED");
-          exec("a.exe < " + "input.txt", (err, stdout, stderr) => {
+          exec("./a.out < " + "input.txt", (err, stdout, stderr) => {
             if (err) {
               console.log("ERROR " + err);
               resolve({
