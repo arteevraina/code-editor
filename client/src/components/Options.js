@@ -5,16 +5,20 @@ import secret from "../secret";
 import Dropdown from "react-dropdown";
 import axios from "axios";
 
-function Options({ displayOutput }) {
+function Options() {
   const { code } = useContext(GlobalContext);
   const { lang } = useContext(GlobalContext);
   const { result } = useContext(GlobalContext);
   const { handleLangChange } = useContext(GlobalContext);
+  const { handleInputChange } = useContext(GlobalContext);
+  const { input } = useContext(GlobalContext);
+  const { displayOutput } = useContext(GlobalContext);
 
   const state = {
     code: code,
     result: result,
     lang: lang,
+    input: input
   };
 
   console.log(state);
@@ -22,12 +26,12 @@ function Options({ displayOutput }) {
   const options = ["python", "java", "cpp", "c"];
   const defaultOption = options[0];
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = e => {
     e.preventDefault();
     alert("Submit Code");
     axios
       .post(`${secret.url}code/submit`, state)
-      .then((res) => {
+      .then(res => {
         console.log("this is it" + JSON.stringify(res.data));
         const data = res.data;
         if (data.err) {
@@ -38,7 +42,7 @@ function Options({ displayOutput }) {
           displayOutput(data.output);
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -66,18 +70,22 @@ function Options({ displayOutput }) {
                 <img src="" />
               </span>
             </button>
-            <Dropdown
-              options={options}
-              onChange={(option) => handleLangChange(option.value)}
-              value={defaultOption}
-              placeholder="Select an option"
-              className="dropdownlang"
-            />
           </div>
+          <Dropdown
+            className="dropdwn"
+            options={options}
+            onChange={option => handleLangChange(option.value)}
+            placeholder="Select a language (default is python)"
+          />
         </div>
         <div class="optionsbox2">
-          <p class="optionsp">Input area</p>
-          <div class="optionswritearea"></div>
+          <textarea
+            class="optionswritearea"
+            placeholder={input}
+            onChange={e => {
+              handleInputChange(e.target.value);
+            }}
+          ></textarea>
         </div>
       </div>
     </>

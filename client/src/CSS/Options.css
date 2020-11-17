@@ -1,17 +1,19 @@
 .options {
   height: 100%;
   flex: 0 0 30%;
-  background-color: green;
+  background-color: #3d3d3d;
 }
 
 .optionsbox1 {
   height: 50%;
-  background-color: #0c1722;
+  background-color: #3d3d3d;
+  box-sizing: border-box;
+  border-bottom: 1px solid #fff8;
 }
 
 .optionsbox2 {
   height: 50%;
-  background-color: #203244;
+  background-color: #3d3d3d;
   position: relative;
   display: flex;
   justify-content: center;
@@ -26,10 +28,26 @@
   color: antiquewhite;
 }
 
+.dropdwn {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  color: white;
+  background-color: #209adf;
+  border-radius: 10px;
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .optionswritearea {
-  background-color: #3d3d3d;
+  background-color: #1e1e1e;
   flex: 0 0 90%;
   margin: 5%;
+  padding: 2%;
+  color: white;
 }
 
 .btncont {
@@ -46,6 +64,7 @@
   border-radius: 10px;
   border: none;
   color: white;
+  font-weight: 900;
 }
 
 .dropdownlang {
