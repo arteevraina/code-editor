@@ -9,6 +9,8 @@
 
 .outputtext {
   position: absolute;
+  color: antiquewhite;
+  font-style: italic;
   left: 5%;
 }
 
