@@ -1,6 +1,6 @@
 .outputarea {
   height: 35%;
-  background-color: rgb(61, 61, 61);
+  background-color: #12202f;
   position: relative;
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@
 
 .textarea {
   flex: 0 0 90%;
-  background-color: #1e1e1e;
+  background-color: black;
   margin: 3%;
   padding: 2%;
   color: white;
