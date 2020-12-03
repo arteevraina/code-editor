@@ -10,9 +10,9 @@ function CodeArea({ onCodeChangeHandler }) {
   // console.log(lang);
   const { handleCodeChange } = useContext(GlobalContext);
 
-  const inputChangeHandler = e => {
+  const inputChangeHandler = (e) => {
     return {
-      input: e.target.value
+      input: e.target.value,
     };
   };
 
@@ -23,12 +23,12 @@ function CodeArea({ onCodeChangeHandler }) {
     cursorBlinking: "blink",
     autoClosingQuotes: "always",
     find: {
-      autoFindInSelection: "always"
+      autoFindInSelection: "always",
     },
-    snippetSuggestions: "inline"
+    snippetSuggestions: "inline",
   };
 
-  const editorDidMount = e => {
+  const editorDidMount = (e) => {
     console.log("Editor Mounted");
   };
 
@@ -39,10 +39,10 @@ function CodeArea({ onCodeChangeHandler }) {
           <MonacoEditor
             width="100%"
             height="100%"
-            theme="vs-dark"
+            theme="hc-black"
             value={code}
             options={options}
-            onChange={newCode => handleCodeChange(newCode)}
+            onChange={(newCode) => handleCodeChange(newCode)}
             editorDidMount={editorDidMount}
           />
         </div>
