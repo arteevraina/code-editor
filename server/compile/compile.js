@@ -6,7 +6,7 @@ const saveFile = (name, data) => {
   return new Promise((resolve, reject) => {
     // Saving File
     console.log("SAVING FILES");
-    fs.writeFile(name, data, function (err) {
+    fs.writeFile(name, data, function(err) {
       if (err) {
         console.log(err);
         reject();
@@ -25,7 +25,7 @@ const cExecute = (data, input) => {
     saveFile(fileName, data)
       .then(() => {
         // Create Input file
-        fs.writeFile("input.txt", input, function (err) {
+        fs.writeFile("input.txt", input, function(err) {
           if (err) {
             console.log(err);
             reject();
@@ -44,8 +44,8 @@ const cExecute = (data, input) => {
             console.error(`exec error: ${err}`);
             resolve({
               err: true,
-              output: err,
-              error: stderr,
+              output: `${err}`,
+              error: stderr
             });
           }
 
@@ -56,15 +56,15 @@ const cExecute = (data, input) => {
               console.log("ERROR " + err);
               resolve({
                 err: true,
-                output: err,
-                error: stderr,
+                output: `${err}`,
+                error: stderr
               });
             }
 
             console.log("OUTPUT ", stdout);
             resolve({
               err: false,
-              output: stdout,
+              output: stdout
             });
           });
         });
@@ -73,7 +73,7 @@ const cExecute = (data, input) => {
         console.log("ERROR SAVE FILE" + saveFileRes);
         const err = {
           err: true,
-          output: "Internal Server Error!",
+          output: "Internal Server Error!"
         };
         resolve(err);
       });
@@ -85,14 +85,14 @@ const cExecute = (data, input) => {
 const cPlusPlusExecute = (data, input) => {
   const res = {
     err: false,
-    msg: "",
+    msg: ""
   };
   return new Promise((resolve, reject) => {
     const fileName = "test.cpp";
     saveFile(fileName, data)
       .then(() => {
         // Create Input file
-        fs.writeFile("input.txt", input, function (err) {
+        fs.writeFile("input.txt", input, function(err) {
           if (err) {
             console.log(err);
             reject();
@@ -111,8 +111,8 @@ const cPlusPlusExecute = (data, input) => {
             console.error(`exec error: ${err}`);
             resolve({
               err: true,
-              output: err,
-              error: stderr,
+              output: `${err}`,
+              error: stderr
             });
           }
 
@@ -123,15 +123,15 @@ const cPlusPlusExecute = (data, input) => {
               console.log("ERROR " + err);
               resolve({
                 err: true,
-                output: err,
-                error: stderr,
+                output: `${err}`,
+                error: stderr
               });
             }
 
             console.log("OUTPUT ", stdout);
             resolve({
               err: false,
-              output: stdout,
+              output: stdout
             });
           });
         });
@@ -140,7 +140,7 @@ const cPlusPlusExecute = (data, input) => {
         console.log("ERROR SAVE FILE" + saveFileRes);
         const err = {
           err: true,
-          output: "Internal Server Error!",
+          output: "Internal Server Error!"
         };
         resolve(err);
       });
@@ -151,14 +151,14 @@ const cPlusPlusExecute = (data, input) => {
 const javaExecute = (data, input) => {
   const res = {
     err: false,
-    msg: "",
+    msg: ""
   };
   return new Promise((resolve, reject) => {
     const fileName = "test.java";
     saveFile(fileName, data)
       .then(() => {
         // Create Input file
-        fs.writeFile("input.txt", input, function (err) {
+        fs.writeFile("input.txt", input, function(err) {
           if (err) {
             console.log(err);
             reject();
@@ -177,8 +177,8 @@ const javaExecute = (data, input) => {
             console.error(`exec error: ${err}`);
             resolve({
               err: true,
-              output: err,
-              error: stderr,
+              output: `${err}`,
+              error: stderr
             });
           }
 
@@ -189,15 +189,15 @@ const javaExecute = (data, input) => {
               console.log("ERROR " + err);
               resolve({
                 err: true,
-                output: err,
-                error: stderr,
+                output: `${err}`,
+                error: stderr
               });
             }
 
             console.log("OUTPUT ", stdout);
             resolve({
               err: false,
-              output: stdout,
+              output: stdout
             });
           });
         });
@@ -206,7 +206,7 @@ const javaExecute = (data, input) => {
         console.log("ERROR SAVE FILE" + saveFileRes);
         const err = {
           err: true,
-          output: "Internal Server Error!",
+          output: "Internal Server Error!"
         };
         resolve(err);
       });
@@ -217,14 +217,14 @@ const javaExecute = (data, input) => {
 const pythonExecute = (data, input) => {
   const res = {
     err: false,
-    msg: "",
+    msg: ""
   };
   return new Promise((resolve, reject) => {
     const fileName = "test.py";
     saveFile(fileName, data)
       .then(() => {
         // Create Input file
-        fs.writeFile("input.txt", input, function (err) {
+        fs.writeFile("input.txt", input, function(err) {
           if (err) {
             console.log(err);
             reject();
@@ -242,16 +242,16 @@ const pythonExecute = (data, input) => {
           (err, stdout, stderr) => {
             if (err) {
               // IF COMPILATION ERROR
-              console.error(`exec error: ${err}`);
+              console.error(`exec error==: ${err}`);
               resolve({
                 err: true,
-                output: err,
-                error: stderr,
+                output: `${err}`,
+                error: stderr
               });
             }
             resolve({
               err: false,
-              output: stdout,
+              output: stdout
             });
           }
         );
@@ -260,7 +260,7 @@ const pythonExecute = (data, input) => {
         console.log("ERROR SAVE FILE" + saveFileRes);
         const err = {
           err: true,
-          output: "Internal Server Error!",
+          output: "Internal Server Error!"
         };
         resolve(err);
       });
@@ -271,5 +271,5 @@ module.exports = {
   cPlusPlusExecute,
   cExecute,
   javaExecute,
-  pythonExecute,
+  pythonExecute
 };
