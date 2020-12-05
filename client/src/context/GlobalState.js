@@ -46,6 +46,23 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function download() {
+    var element = document.createElement("a");
+    console.log(state.code);
+    element.setAttribute(
+      "href",
+      "data:text/plain;charset=utf-8," + encodeURIComponent(state.code)
+    );
+    element.setAttribute("download", "code.txt");
+
+    element.style.display = "none";
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -56,7 +73,8 @@ export const GlobalProvider = ({ children }) => {
         handleCodeChange,
         handleLangChange,
         handleInputChange,
-        displayOutput
+        displayOutput,
+        download
       }}
     >
       {children}

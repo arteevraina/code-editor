@@ -13,12 +13,13 @@ function Options() {
   const { handleInputChange } = useContext(GlobalContext);
   const { input } = useContext(GlobalContext);
   const { displayOutput } = useContext(GlobalContext);
+  const { download } = useContext(GlobalContext);
 
   const state = {
     code: code,
     result: result,
     lang: lang,
-    input: input,
+    input: input
   };
 
   console.log(state);
@@ -26,23 +27,29 @@ function Options() {
   const options = ["python", "java", "cpp", "c"];
   const defaultOption = options[0];
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = e => {
     e.preventDefault();
     alert("Submit Code");
     axios
       .post(`${secret.url}code/submit`, state)
-      .then((res) => {
+      .then(res => {
         console.log("this is it" + JSON.stringify(res.data));
         const data = res.data;
+
         if (data.err) {
           // Error in user code
           console.log("options" + state);
+          if (
+            data.output ==
+            "RangeError [ERR_CHILD_PROCESS_STDIO_MAXBUFFER]: stdout maxBuffer length exceeded"
+          ) {
+            alert("Possible infinite loop or recurssion call");
+          }
           displayOutput(data.error);
-        } else {
-          displayOutput(data.output);
         }
+        displayOutput(data.output);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -58,13 +65,8 @@ function Options() {
                 <img src="" />
               </span>
             </button>
-            <button class="optionsbtn">
-              Stop
-              <span class="btnicon">
-                <img src="" />
-              </span>
-            </button>
-            <button class="optionsbtn">
+
+            <button class="optionsbtn" onClick={download}>
               Download
               <span class="btnicon">
                 <img src="" />
@@ -74,7 +76,7 @@ function Options() {
           <Dropdown
             className="dropdwn"
             options={options}
-            onChange={(option) => handleLangChange(option.value)}
+            onChange={option => handleLangChange(option.value)}
             placeholder={options[0]}
           />
         </div>
@@ -82,7 +84,7 @@ function Options() {
           <textarea
             class="optionswritearea"
             placeholder={input}
-            onChange={(e) => {
+            onChange={e => {
               handleInputChange(e.target.value);
             }}
           ></textarea>
