@@ -19,20 +19,20 @@ function Options() {
     code: code,
     result: result,
     lang: lang,
-    input: input
+    input: input,
   };
 
   console.log(state);
 
-  const options = ["python", "java", "cpp", "c"];
+  const options = ["python", "java", "cpp", "c", "javascript"];
   const defaultOption = options[0];
 
-  const onSubmitHandler = e => {
+  const onSubmitHandler = (e) => {
     e.preventDefault();
     alert("Submit Code");
     axios
       .post(`${secret.url}code/submit`, state)
-      .then(res => {
+      .then((res) => {
         console.log("this is it" + JSON.stringify(res.data));
         const data = res.data;
 
@@ -49,7 +49,7 @@ function Options() {
         }
         displayOutput(data.output);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -76,7 +76,7 @@ function Options() {
           <Dropdown
             className="dropdwn"
             options={options}
-            onChange={option => handleLangChange(option.value)}
+            onChange={(option) => handleLangChange(option.value)}
             placeholder={options[0]}
           />
         </div>
@@ -84,7 +84,7 @@ function Options() {
           <textarea
             class="optionswritearea"
             placeholder={input}
-            onChange={e => {
+            onChange={(e) => {
               handleInputChange(e.target.value);
             }}
           ></textarea>

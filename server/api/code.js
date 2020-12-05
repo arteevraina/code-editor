@@ -7,8 +7,8 @@ router.get("/test", (req, res) => {
   res.json({ msg: "code route" });
 });
 
-const deleteFile = filename => {
-  fs.unlink(filename, function(err) {
+const deleteFile = (filename) => {
+  fs.unlink(filename, function (err) {
     if (err) {
       console.log("SORRY NOT DELETED");
     }
@@ -27,14 +27,14 @@ router.post("/submit", (req, res) => {
     case "cpp":
       return execute
         .cPlusPlusExecute(code, input)
-        .then(data => {
+        .then((data) => {
           console.log("SUCCESSFULL PROMISE " + data);
           console.log("SENDING " + JSON.stringify(data));
           res.json(data);
           deleteFile(path.join(__dirname, "../../input.txt"));
           deleteFile(path.join(__dirname, "../../test.cpp"));
         })
-        .catch(err => {
+        .catch((err) => {
           console.log("ERROR PROMISE " + err);
           deleteFile(path.join(__dirname, "../../input.txt"));
           deleteFile(path.join(__dirname, "../../test.cpp"));
@@ -42,7 +42,7 @@ router.post("/submit", (req, res) => {
     case "c":
       return execute
         .cExecute(code, input)
-        .then(data => {
+        .then((data) => {
           console.log("SUCCESSFULL PROMISE " + data);
           console.log("SENDING " + data);
           res.json(data);
@@ -50,7 +50,7 @@ router.post("/submit", (req, res) => {
           deleteFile(path.join(__dirname, "../../test.c"));
           deleteFile(path.join(__dirname, "../../a.exe"));
         })
-        .catch(err => {
+        .catch((err) => {
           console.log("ERROR PROMISE " + err);
           deleteFile(path.join(__dirname, "../../input.txt"));
           deleteFile(path.join(__dirname, "../../test.c"));
@@ -60,7 +60,7 @@ router.post("/submit", (req, res) => {
     case "java":
       return execute
         .javaExecute(code, input)
-        .then(data => {
+        .then((data) => {
           console.log("SUCCESSFULL PROMISE " + data);
           console.log("SENDING " + data);
           res.json(data);
@@ -68,7 +68,7 @@ router.post("/submit", (req, res) => {
           deleteFile(path.join(__dirname, "../../test.java"));
           deleteFile(path.join(__dirname, "../../test.class"));
         })
-        .catch(err => {
+        .catch((err) => {
           console.log("ERROR PROMISE " + err);
           deleteFile(path.join(__dirname, "../../input.txt"));
           deleteFile(path.join(__dirname, "../../test.java"));
@@ -78,7 +78,7 @@ router.post("/submit", (req, res) => {
     case "python":
       return execute
         .pythonExecute(code, input)
-        .then(data => {
+        .then((data) => {
           console.log("SUCCESSFULL PROMISE " + data);
           console.log("SENDING " + data);
           res.json(data);
@@ -86,11 +86,29 @@ router.post("/submit", (req, res) => {
           deleteFile(path.join(__dirname, "../../test.py"));
           deleteFile(path.join(__dirname, "../../a.exe"));
         })
-        .catch(err => {
+        .catch((err) => {
           console.log("ERROR PROMISE " + err);
           deleteFile(path.join(__dirname, "../../input.txt"));
           deleteFile(path.join(__dirname, "../../test.py"));
           deleteFile(path.join(__dirname, "../../a.exe"));
+        });
+
+    case "javascript":
+      return execute
+        .javascriptExecute(code, input)
+        .then((data) => {
+          console.log("SUCCESSFULL PROMISE " + data);
+          console.log("SENDING " + data);
+          res.json(data);
+          deleteFile(path.join(__dirname, "../../input.txt"));
+          deleteFile(path.join(__dirname, "../../test.js"));
+          // deleteFile(path.join(__dirname, "../../a.exe"));
+        })
+        .catch((err) => {
+          console.log("ERROR PROMISE " + err);
+          deleteFile(path.join(__dirname, "../../input.txt"));
+          deleteFile(path.join(__dirname, "../../test.js"));
+          // deleteFile(path.join(__dirname, "../../a.exe"));
         });
   } // switch
 });

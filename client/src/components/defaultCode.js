@@ -17,9 +17,12 @@ const java = `class test {
 
 const python = "# your code will come here";
 
+const javascript = "// Write your code here ";
+
 export const code = {
   c,
   cpp,
   java,
-  python
+  python,
+  javascript,
 };
