@@ -5,13 +5,13 @@ export default (state, action) => {
     case "DISPLAY_OUTPUT":
       return {
         ...state,
-        result: action.payload
+        result: action.payload,
       };
 
     case "CODE_CHANGE":
       return {
         ...state,
-        code: action.payload
+        code: action.payload,
       };
 
     case "PREVIOUS_INPUT":
@@ -23,32 +23,38 @@ export default (state, action) => {
     case "INPUT_CHANGE":
       return {
         ...state,
-        input: action.payload
+        input: action.payload,
       };
     case "LANG_CHANGE":
       if (action.payload === "cpp") {
         return {
           ...state,
           lang: action.payload,
-          code: code.cpp
+          code: code.cpp,
         };
       } else if (action.payload === "c") {
         return {
           ...state,
           lang: action.payload,
-          code: code.c
+          code: code.c,
         };
       } else if (action.payload === "java") {
         return {
           ...state,
           lang: action.payload,
-          code: code.java
+          code: code.java,
         };
       } else if (action.payload === "python") {
         return {
           ...state,
           lang: action.payload,
-          code: code.python
+          code: code.python,
+        };
+      } else if (action.payload === "javascript") {
+        return {
+          ...state,
+          lang: action.payload,
+          code: code.javascript,
         };
       }
 
