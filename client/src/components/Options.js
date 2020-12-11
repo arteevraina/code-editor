@@ -14,6 +14,8 @@ function Options() {
   const { input } = useContext(GlobalContext);
   const { displayOutput } = useContext(GlobalContext);
   const { download } = useContext(GlobalContext);
+  const { loadPreviousInput } = useContext(GlobalContext);
+  const { storePreviousInput } = useContext(GlobalContext);
 
   const state = {
     code: code,
@@ -71,6 +73,12 @@ function Options() {
               <span class="btnicon">
                 <img src="" />
               </span>
+            </button>
+            <button class="optionsbtn" onClick={storePreviousInput}>
+              Store Input
+            </button>
+            <button class="optionsbtn" onClick={loadPreviousInput}>
+              Load Input
             </button>
           </div>
           <Dropdown

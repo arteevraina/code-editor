@@ -10,6 +10,8 @@ const initialState = {
   input: "Enter your input"
 };
 
+var toStore;
+
 // Create Context
 export const GlobalContext = createContext(initialState);
 
@@ -33,9 +35,27 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function handleInputChange(input_data) {
+    toStore = input_data;
     dispatch({
       type: "INPUT_CHANGE",
       payload: input_data
+    });
+  }
+
+  function storePreviousInput() {
+    console.log(toStore, "this is stored");
+    localStorage.setItem("lastInput", toStore ? toStore : "");
+  }
+
+  function loadPreviousInput() {
+    var lastInput =
+      localStorage.getItem("lastInput") != ""
+        ? localStorage.getItem("lastInput")
+        : "";
+
+    dispatch({
+      type: "PREVIOUS_INPUT",
+      payload: lastInput
     });
   }
 
@@ -74,7 +94,9 @@ export const GlobalProvider = ({ children }) => {
         handleLangChange,
         handleInputChange,
         displayOutput,
-        download
+        download,
+        storePreviousInput,
+        loadPreviousInput
       }}
     >
       {children}
