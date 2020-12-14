@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "../CSS/Options.css";
 import { GlobalContext } from "../context/GlobalState";
 import secret from "../secret";
-import Dropdown from "react-dropdown";
+import Select from "react-select";
 import axios from "axios";
 
 function Options() {
@@ -26,8 +26,16 @@ function Options() {
 
   console.log(state);
 
-  const options = ["python", "java", "cpp", "c", "javascript"];
-  const defaultOption = options[0];
+  // const options = ["python", "java", "cpp", "c", "javascript"];
+  // const defaultOption = options[0];
+
+  const options = [
+    { value: "python", label: "python" },
+    { value: "java", label: "java" },
+    { value: "cpp", label: "cpp" },
+    { value: "c", label: "c" },
+    { value: "javascript", label: "javascript" },
+  ];
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -81,11 +89,15 @@ function Options() {
               Load Input
             </button>
           </div>
-          <Dropdown
+          {/* <Dropdown
             className="dropdwn"
             options={options}
             onChange={(option) => handleLangChange(option.value)}
-            placeholder={options[0]}
+          /> */}
+          <Select
+            className="select"
+            options={options}
+            onChange={(option) => handleLangChange(option.value)}
           />
         </div>
         <div class="optionsbox2">
