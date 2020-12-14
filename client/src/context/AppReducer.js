@@ -14,6 +14,12 @@ export default (state, action) => {
         code: action.payload,
       };
 
+    case "PREVIOUS_INPUT":
+      return {
+        ...state,
+        input: action.payload
+      };
+
     case "INPUT_CHANGE":
       return {
         ...state,
